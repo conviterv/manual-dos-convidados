@@ -3,45 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Manual dos Convidados - 19.12.2025</title>
+    <title>Casamento Ronaldo & Vitoria | Manual dos Convidados</title>
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS (via CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- FontAwesome Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Great+Vibes&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        serenity: {
-                            50: '#f0f4f8',
-                            100: '#d9e2ec',
-                            300: '#92a8d1', // Base Serenity
-                            500: '#6c85b5',
-                            700: '#4a5d85',
-                        },
-                        gold: {
-                            300: '#e5c983',
-                            500: '#d4af37', // Metallic Gold
-                            600: '#b08d26',
-                            700: '#8a6d1c',
-                        }
+                        serenity: '#B0C4DE',
+                        serenityDark: '#91aecf',
+                        gold: '#D4AF37',
+                        goldLight: '#F4dfb0',
                     },
                     fontFamily: {
                         serif: ['Cinzel', 'serif'],
                         script: ['Great Vibes', 'cursive'],
-                        sans: ['Lato', 'sans-serif'],
-                    },
-                    backgroundImage: {
-                        'texture': "url('data:image/svg+xml,%3Csvg width=\\'60\\' height=\\'60\\' viewBox=\\'0 0 60 60\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cg fill=\\'none\\' fill-rule=\\'evenodd\\'%3E%3Cg fill=\\'%2392a8d1\\' fill-opacity=\\'0.05\\'%3E%3Cpath d=\\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
+                        sans: ['Montserrat', 'sans-serif'],
                     }
                 }
             }
@@ -49,472 +37,453 @@
     </script>
 
     <style>
-        /* Estilos Globais e Utilitários */
-        body {
-            background-color: #fcfcfc;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        /* Animações de Transição */
-        .fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
-            opacity: 0;
-            transform: translateY(10px);
+        /* Estilos Globais e Scroll Snap */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Impede rolagem padrão */
+            background-color: #fdfdfd;
         }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        #main-container {
+            height: 100%;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
         }
 
-        .gold-gradient-text {
-            background: linear-gradient(to right, #b08d26, #d4af37, #f5e0a3, #d4af37, #b08d26);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            background-size: 200% auto;
-            animation: shine 5s linear infinite;
-        }
-
-        @keyframes shine {
-            to {
-                background-position: 200% center;
-            }
-        }
-
-        /* Esconder barra de rolagem mas permitir scroll */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .active-nav {
-            color: #d4af37;
-            transform: translateY(-2px);
-        }
-        
-        .active-nav::after {
-            content: '';
-            display: block;
-            width: 4px;
-            height: 4px;
-            background-color: #d4af37;
-            border-radius: 50%;
-            margin: 4px auto 0;
-        }
-
-        /* Estilo para itens da lista */
-        .list-check li {
+        section {
+            height: 100vh;
+            width: 100%;
+            scroll-snap-align: start;
             position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
-        .list-check li::before {
-            content: '•';
-            color: #92a8d1;
-            position: absolute;
+
+        /* Background Floral Fixo */
+        .fixed-bg {
+            position: fixed;
+            top: 0;
             left: 0;
-            font-weight: bold;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1470&auto=format&fit=crop') no-repeat center center;
+            background-size: cover;
+            filter: brightness(0.95);
         }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            z-index: -1;
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            width: 90%;
+            max-width: 500px;
+            max-height: 85vh; /* Garante que cabe na tela */
+            overflow-y: auto; /* Permite rolar conteúdo interno se for muito longo */
+            padding: 2rem;
+            text-align: center;
+            opacity: 0; /* Começa invisível para animação */
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+
+        /* Scrollbar customizada para o card interno */
+        .glass-card::-webkit-scrollbar {
+            width: 4px;
+        }
+        .glass-card::-webkit-scrollbar-thumb {
+            background-color: #B0C4DE;
+            border-radius: 4px;
+        }
+
+        /* Animação de Entrada */
+        .section-active .glass-card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Utilitários de Texto */
+        .highlight-serenity {
+            background-color: #B0C4DE;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        
+        .highlight-white {
+            background-color: #ffffff;
+            color: #333;
+            border: 1px solid #ccc;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Countdown Box */
+        .timer-box {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .timer-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(176, 196, 222, 0.2); /* Azul Serenity super leve */
+            border: 1px solid #B0C4DE;
+            padding: 8px;
+            border-radius: 8px;
+            min-width: 60px;
+        }
+        .timer-value {
+            font-family: 'Cinzel', serif;
+            font-weight: 800;
+            color: #333;
+            font-size: 1.2rem;
+        }
+        .timer-label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+        }
+
+        /* Listas e Ícones */
+        .gift-category {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        .gift-category h3 {
+            color: #B0C4DE;
+            border-bottom: 1px solid #D4AF37;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
+        }
+        .gift-items {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .guideline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .guideline-icon {
+            color: #B0C4DE;
+            margin-right: 12px;
+            margin-top: 4px;
+            font-size: 1.1rem;
+        }
+
     </style>
 </head>
-<body class="font-sans text-gray-700 h-screen flex flex-col overflow-hidden bg-texture">
+<body>
 
-    <!-- Área de Conteúdo Principal (Scrollável) -->
-    <main id="content-area" class="flex-1 overflow-y-auto overflow-x-hidden no-scrollbar pb-24 relative scroll-smooth">
-        
-        <!-- PÁGINA 1: BOAS VINDAS -->
-        <section id="page-home" class="min-h-full flex flex-col items-center justify-center p-6 text-center page-section fade-in">
-            <div class="mb-6">
-                <i class="fas fa-church text-4xl text-serenity-300 opacity-80"></i>
-            </div>
-            
-            <h1 class="font-script text-6xl text-serenity-500 mb-2">Manual</h1>
-            <h2 class="font-serif uppercase tracking-widest text-sm text-gray-400 mb-8">Dos Convidados</h2>
+    <!-- Elementos de Fundo -->
+    <div class="fixed-bg"></div>
+    <div class="overlay"></div>
 
-            <div class="border-t border-b border-gold-300 py-8 px-4 w-full max-w-md bg-white shadow-sm rounded-sm">
-                <p class="font-serif text-lg leading-relaxed text-gray-600 italic mb-6">
-                    "Queridos amigos e familiares, a aceitação do nosso convite encheu nossos corações de gratidão. É uma honra compartilhar com vocês o dia escolhido para o início da nossa aliança."
-                </p>
-                
-                <div class="my-8">
-                    <span class="block text-5xl font-serif font-bold gold-gradient-text mb-2">19</span>
-                    <span class="block text-xl uppercase tracking-widest text-gray-500 font-serif">Dezembro</span>
-                    <span class="block text-2xl font-serif text-gold-600 mt-1">2025</span>
+    <!-- Container Principal de Scroll Snap -->
+    <div id="main-container">
+
+        <!-- PÁGINA 1: BOAS-VINDAS & DATA -->
+        <section id="home">
+            <div class="glass-card">
+                <div class="mb-4">
+                    <h1 class="font-script text-5xl text-serenity mb-2">Ronaldo & Vitoria</h1>
+                    <div class="h-0.5 w-16 bg-gold mx-auto mb-6"></div>
                 </div>
 
-                <p class="font-sans text-sm text-gray-500 mt-6">
-                    "Estamos ansiosos por este dia e a sua presença tornará a nossa alegria completa. Contamos os dias para celebrarmos juntos."
+                <p class="font-sans text-gray-600 mb-6 italic leading-relaxed text-sm">
+                    "Queridos amigos e familiares, a aceitação do nosso convite encheu nossos corações de gratidão. É uma honra compartilhar com vocês o dia escolhido para o início da nossa aliança."
                 </p>
+
+                <div class="my-8 border-y border-serenity/30 py-6">
+                    <p class="font-serif text-3xl font-bold text-gray-800 tracking-widest">
+                        19 . 12 . 2025
+                    </p>
+                    <p class="font-serif text-gold font-bold mt-2">ÀS 19:30 HORAS</p>
+                </div>
+
+                <!-- Contador Regressivo -->
+                <div class="timer-box" id="countdown">
+                    <div class="timer-unit">
+                        <span class="timer-value" id="days">00</span>
+                        <span class="timer-label">Dias</span>
+                    </div>
+                    <div class="timer-unit">
+                        <span class="timer-value" id="hours">00</span>
+                        <span class="timer-label">Horas</span>
+                    </div>
+                    <div class="timer-unit">
+                        <span class="timer-value" id="minutes">00</span>
+                        <span class="timer-label">Min</span>
+                    </div>
+                    <div class="timer-unit">
+                        <span class="timer-value" id="seconds">00</span>
+                        <span class="timer-label">Seg</span>
+                    </div>
+                </div>
+
+                <p class="font-sans text-gray-600 mt-8 text-sm">
+                    Estamos ansiosos por este dia e a sua presença tornará a nossa alegria completa. Contamos os dias para celebrarmos juntos.
+                </p>
+                
+                <div class="mt-8 animate-bounce text-serenity">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
             </div>
         </section>
 
         <!-- PÁGINA 2: LOCAL -->
-        <section id="page-location" class="hidden min-h-full flex flex-col items-center justify-start pt-12 p-6 text-center page-section">
-            <h2 class="font-serif text-2xl text-serenity-700 mb-2 font-bold">Onde Consagraremos</h2>
-            <h3 class="font-script text-4xl text-gold-500 mb-8">Nossa União</h3>
+        <section id="local">
+            <div class="glass-card">
+                <i class="fas fa-church text-4xl text-serenity mb-4"></i>
+                <h2 class="font-serif text-2xl text-gray-800 mb-2 font-bold">Onde Consagraremos Nossa União</h2>
+                <div class="h-0.5 w-10 bg-gold mx-auto mb-6"></div>
 
-            <div class="w-full max-w-md bg-white p-6 rounded-lg shadow-md border-t-4 border-serenity-300 mb-8">
-                <div class="w-16 h-16 bg-serenity-50 rounded-full flex items-center justify-center mx-auto mb-4 text-serenity-500">
-                    <i class="fas fa-map-marker-alt text-2xl"></i>
+                <div class="my-6">
+                    <h3 class="font-serif font-bold text-lg text-gray-700 mb-2">Igreja Evangélica Assembleia de Deus</h3>
+                    <p class="font-sans text-sm text-serenity font-bold uppercase tracking-wide mb-4">Ministério Missão Europa/Brasil</p>
+                    
+                    <div class="bg-white/50 p-4 rounded-lg border border-white mb-6">
+                        <p class="font-sans text-gray-600 leading-relaxed">
+                            Rua Olimpio Brito, n. 0<br>
+                            Vila Santa Rita<br>
+                            Tocantinópolis - TO<br>
+                            CEP 77900-000
+                        </p>
+                    </div>
                 </div>
-                
-                <h4 class="font-serif font-bold text-gray-800 text-lg mb-2">Igreja Evangélica Assembleia de Deus</h4>
-                <p class="text-serenity-500 font-semibold mb-4 text-sm uppercase tracking-wide">Ministério Missão Europa/Brasil</p>
-                
-                <div class="w-10 h-0.5 bg-gold-300 mx-auto mb-4"></div>
 
-                <p class="text-gray-600 mb-6 leading-relaxed">
-                    Rua Olimpio Brito, n. 0<br>
-                    Vila Palmeiras<br>
-                    Tocantinópolis - TO<br>
-                    CEP 77900-000
-                </p>
-
-                <button onclick="openMap()" class="w-full bg-serenity-500 hover:bg-serenity-700 text-white font-serif py-3 px-6 rounded shadow transition duration-300 flex items-center justify-center gap-2">
-                    <i class="fas fa-location-arrow text-sm"></i>
-                    <span>Ver Localização no Mapa</span>
-                </button>
-            </div>
-            
-            <div class="w-full max-w-md h-48 bg-gray-200 rounded-lg overflow-hidden shadow-inner relative">
-                <!-- Mock Map visual -->
-                <div class="absolute inset-0 bg-serenity-100 flex items-center justify-center">
-                    <i class="fas fa-map text-serenity-300 text-4xl"></i>
-                </div>
+                <a href="https://www.google.com/maps/search/?api=1&query=Rua+Olimpio+Brito+Vila+Santa+Rita+Tocantinopolis" target="_blank" 
+                   class="inline-block bg-serenity text-white font-sans text-sm font-bold py-3 px-8 rounded-full shadow-lg hover:bg-serenityDark transition duration-300 flex items-center justify-center gap-2 mx-auto w-full max-w-xs">
+                    <i class="fas fa-map-marker-alt"></i> VER LOCALIZAÇÃO
+                </a>
             </div>
         </section>
 
         <!-- PÁGINA 3: DIRETRIZES -->
-        <section id="page-guidelines" class="hidden min-h-full flex flex-col items-center justify-start pt-10 p-4 page-section">
-            <div class="text-center mb-8">
-                <i class="fas fa-scroll text-gold-500 text-3xl mb-2"></i>
-                <h2 class="font-serif text-2xl text-gray-800 font-bold">Diretrizes da Cerimônia</h2>
-                <p class="text-xs text-gray-500 mt-2 uppercase tracking-wide">Para que tudo seja feito com decência e ordem</p>
-            </div>
-
-            <div class="w-full max-w-md space-y-4 pb-8">
+        <section id="diretrizes">
+            <div class="glass-card">
+                <i class="fas fa-scroll text-3xl text-gold mb-4"></i>
+                <h2 class="font-serif text-xl text-gray-800 mb-6 font-bold uppercase tracking-wide">Diretrizes para a Cerimônia</h2>
                 
-                <!-- Card 1 -->
-                <div class="bg-white p-4 rounded-r-lg border-l-4 border-gold-500 shadow-sm flex gap-4 items-start">
-                    <div class="bg-gold-50 p-2 rounded-full text-gold-600 mt-1">
-                        <i class="fas fa-clipboard-check"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-serif font-bold text-gray-800">Confirmação Necessária</h3>
-                        <p class="text-sm text-gray-600 mt-1">A presença requer confirmação final na última página deste manual.</p>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="bg-white p-4 rounded-r-lg border-l-4 border-serenity-300 shadow-sm flex gap-4 items-start">
-                    <div class="bg-serenity-50 p-2 rounded-full text-serenity-500 mt-1">
-                        <i class="fas fa-user-lock"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-serif font-bold text-gray-800">Acesso Exclusivo</h3>
-                        <p class="text-sm text-gray-600 mt-1">Entrada com nome na lista. <span class="font-bold text-serenity-700">Convidado não convida.</span></p>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-white p-4 rounded-r-lg border-l-4 border-gold-500 shadow-sm flex gap-4 items-start">
-                    <div class="bg-gold-50 p-2 rounded-full text-gold-600 mt-1">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-serif font-bold text-gray-800">Pontualidade Solene</h3>
-                        <p class="text-sm text-gray-600 mt-1">Início às <span class="font-bold">19:30</span>. Rogamos chegada antecipada.</p>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="bg-white p-4 rounded-r-lg border-l-4 border-serenity-300 shadow-sm flex gap-4 items-start">
-                    <div class="bg-serenity-50 p-2 rounded-full text-serenity-500 mt-1">
-                        <i class="fas fa-tshirt"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-serif font-bold text-gray-800">Traje & Cores</h3>
-                        <p class="text-sm text-gray-600 mt-1"><span class="font-semibold">Social Completo.</span></p>
-                        <p class="text-xs text-red-400 mt-1 font-semibold"><i class="fas fa-exclamation-circle mr-1"></i>Branco exclusivo da Noiva.</p>
-                        <p class="text-xs text-serenity-500 font-semibold"><i class="fas fa-exclamation-circle mr-1"></i>Evitar tons de Azul Serenity (Madrinhas).</p>
-                    </div>
-                </div>
-
-                <!-- Card 5 (Reverência) -->
-                <div class="bg-white p-5 rounded-lg border border-gray-100 shadow-sm mt-4">
-                    <h3 class="font-serif text-center text-gray-800 font-bold mb-4 border-b pb-2">Reverência e Ordem</h3>
-                    <ul class="space-y-4">
-                        <li class="flex gap-3">
-                            <i class="fas fa-mobile-alt text-gray-400 mt-1"></i>
-                            <div class="text-sm text-gray-600">
-                                <span class="font-bold block text-gray-800">Silêncio</span>
-                                Celulares obrigatoriamente em modo silencioso.
-                            </div>
-                        </li>
-                        <li class="flex gap-3">
-                            <i class="fas fa-child text-gray-400 mt-1"></i>
-                            <div class="text-sm text-gray-600">
-                                <span class="font-bold block text-gray-800">Crianças</span>
-                                Pedimos carinhosamente aos pais que zelem pelo comportamento de seus filhos.
-                            </div>
-                        </li>
-                        <li class="flex gap-3">
-                            <i class="fas fa-walking text-gray-400 mt-1"></i>
-                            <div class="text-sm text-gray-600">
-                                <span class="font-bold block text-gray-800">Movimentação</span>
-                                Evitem circular durante a cerimônia. Usem os toaletes antes de sentar.
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- PÁGINA 4: LISTA DE PRESENTES -->
-        <section id="page-gifts" class="hidden min-h-full flex flex-col items-center justify-start pt-10 p-4 page-section">
-            <div class="text-center mb-6 px-4">
-                <i class="fas fa-gift text-serenity-500 text-3xl mb-2"></i>
-                <h2 class="font-serif text-2xl text-gray-800 font-bold">Ofertas de Carinho</h2>
-                <p class="text-sm text-gray-600 mt-4 italic leading-relaxed">
-                    "Sua presença como testemunha é a nossa maior honra. Se desejar abençoar o início do nosso lar, deixamos nossas sugestões de carinho:"
+                <p class="text-xs text-gray-500 mb-6 italic">
+                    Para que o Culto seja celebrado com decência e ordem, pedimos a observância:
                 </p>
-            </div>
 
-            <div class="w-full max-w-md space-y-6 pb-10">
-                
-                <!-- Categoria: Cozinha -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="bg-serenity-50 p-3 flex items-center justify-between cursor-pointer" onclick="toggleGiftList('kitchen-list', 'arrow-1')">
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-utensils text-serenity-500"></i>
-                            <h3 class="font-serif font-bold text-gray-700">Cozinha</h3>
+                <div class="space-y-4">
+                    <div class="guideline-item">
+                        <i class="fas fa-check-circle guideline-icon"></i>
+                        <div class="text-sm text-gray-600">
+                            <strong>Confirmação Necessária:</strong> A presença requer confirmação final na última página deste manual.
                         </div>
-                        <i id="arrow-1" class="fas fa-chevron-down text-gray-400 transition-transform"></i>
                     </div>
-                    <div id="kitchen-list" class="p-4 hidden bg-white">
-                        <ul class="text-sm text-gray-600 grid grid-cols-2 gap-x-2 gap-y-2 list-check">
-                            <li>Triturador/Processador</li>
-                            <li>Jogo de vasilhas</li>
-                            <li>Garrafa de Café</li>
-                            <li>Jarra de água</li>
-                            <li>Jarra de suco c/ copos</li>
-                            <li>Panela de Pressão</li>
-                            <li>Frigideiras</li>
-                            <li>Copos plástico/vidro</li>
-                            <li>Jogo de Taças</li>
-                            <li>Jogo de Xícara</li>
-                            <li>Jogo de talher/facas</li>
-                            <li>Jogo de Prato</li>
-                            <li>Escorredores (Arroz/Macarrão/Louça)</li>
-                            <li>Tábua de corte</li>
-                            <li>Travessas/Marinex</li>
-                            <li>Porta temperos</li>
-                            <li>Porta frios</li>
-                            <li>Potes herméticos</li>
-                            <li>Formas/Assadeiras</li>
-                            <li>Panos (Prato/Mesa)</li>
-                            <li>Tapetes de cozinha</li>
-                            <li>Panelas alumínio (P/M/G)</li>
-                            <li>Panelas antiaderente (P/M/G)</li>
-                            <li>Fruteira</li>
-                            <li>Kit colheres silicone</li>
-                            <li>Amassador de Batata</li>
-                            <li>Ralador</li>
-                            <li>Espátula/Pegadores</li>
-                            <li>Abridores diversos</li>
-                        </ul>
-                    </div>
-                </div>
 
-                <!-- Categoria: Eletrodomésticos -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="bg-gold-50 p-3 flex items-center justify-between cursor-pointer" onclick="toggleGiftList('electro-list', 'arrow-2')">
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-plug text-gold-600"></i>
-                            <h3 class="font-serif font-bold text-gray-700">Eletrodomésticos</h3>
+                    <div class="guideline-item">
+                        <i class="fas fa-user-lock guideline-icon"></i>
+                        <div class="text-sm text-gray-600">
+                            <strong>Acesso Exclusivo:</strong> Entrada com nome na lista. Convidado não convida.
                         </div>
-                        <i id="arrow-2" class="fas fa-chevron-down text-gray-400 transition-transform"></i>
                     </div>
-                    <div id="electro-list" class="p-4 hidden bg-white">
-                        <ul class="text-sm text-gray-600 list-check">
-                            <li>Airfryer</li>
-                            <li>Sanduicheira</li>
-                            <li>Liquidificador</li>
-                            <li>Panela Elétrica</li>
-                        </ul>
-                    </div>
-                </div>
 
-                <!-- Categoria: Quarto -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="bg-serenity-50 p-3 flex items-center justify-between cursor-pointer" onclick="toggleGiftList('bedroom-list', 'arrow-3')">
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-bed text-serenity-500"></i>
-                            <h3 class="font-serif font-bold text-gray-700">Quarto & Banho</h3>
+                    <div class="guideline-item">
+                        <i class="fas fa-clock guideline-icon"></i>
+                        <div class="text-sm text-gray-600">
+                            <strong>Pontualidade Solene:</strong> Início às 19:30. Rogamos chegada antecipada.
                         </div>
-                        <i id="arrow-3" class="fas fa-chevron-down text-gray-400 transition-transform"></i>
                     </div>
-                    <div id="bedroom-list" class="p-4 hidden bg-white">
-                        <ul class="text-sm text-gray-600 grid grid-cols-2 gap-2 list-check">
-                            <li>Jogo de Colcha completo</li>
-                            <li>Travesseiros</li>
-                            <li>Cortina</li>
-                            <li>Lençóis</li>
-                            <li>Toalhas de banho</li>
-                            <li>Toalhas de rosto</li>
-                            <li>Edredom</li>
-                            <li>Tapetes</li>
-                        </ul>
+
+                    <div class="guideline-item">
+                        <i class="fas fa-user-tie guideline-icon"></i>
+                        <div class="text-sm text-gray-600">
+                            <strong>Traje:</strong> Social Completo.
+                        </div>
+                    </div>
+
+                    <div class="guideline-item">
+                        <i class="fas fa-palette guideline-icon"></i>
+                        <div class="text-sm text-gray-600">
+                            <strong>Harmonia de Cores:</strong> 
+                            <span class="highlight-white">Branco</span> exclusivo da Noiva. Evitar tons de 
+                            <span class="highlight-serenity">Azul Serenity</span> (reservado às Madrinhas).
+                        </div>
+                    </div>
+
+                    <div class="border-t border-gray-200 pt-4 mt-4">
+                        <h4 class="font-serif text-gold text-sm font-bold mb-3 uppercase">Reverência e Ordem</h4>
+                        
+                        <div class="guideline-item">
+                            <i class="fas fa-mobile-alt guideline-icon"></i>
+                            <div class="text-xs text-gray-600">
+                                <strong>Silêncio:</strong> Celulares obrigatoriamente em modo silencioso.
+                            </div>
+                        </div>
+                        <div class="guideline-item">
+                            <i class="fas fa-child guideline-icon"></i>
+                            <div class="text-xs text-gray-600">
+                                <strong>Crianças:</strong> Pedimos aos pais que zelem pelo comportamento, evitando ruídos.
+                            </div>
+                        </div>
+                        <div class="guideline-item">
+                            <i class="fas fa-chair guideline-icon"></i>
+                            <div class="text-xs text-gray-600">
+                                <strong>Movimentação:</strong> Evitem circular durante a cerimônia. Usem os toaletes antes.
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PÁGINA 5: CONFIRMAÇÃO -->
-        <section id="page-rsvp" class="hidden min-h-full flex flex-col items-center justify-center p-6 text-center page-section">
-            <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg border border-gold-300 relative overflow-hidden">
-                <!-- Decorative corner -->
-                <div class="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-gold-300 rounded-tl-lg"></div>
-                <div class="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-gold-300 rounded-br-lg"></div>
+        <!-- PÁGINA 4: LISTA DE PRESENTES -->
+        <section id="presentes">
+            <div class="glass-card text-left">
+                <div class="text-center mb-6">
+                    <i class="fas fa-gift text-3xl text-serenity mb-2"></i>
+                    <h2 class="font-serif text-2xl text-gray-800 font-bold">Ofertas de Carinho</h2>
+                    <p class="text-xs text-gray-600 mt-2">
+                        Sua presença como testemunha é a nossa maior honra. Se desejar abençoar o início do nosso lar, deixamos nossas sugestões:
+                    </p>
+                </div>
 
-                <i class="fab fa-whatsapp text-5xl text-green-500 mb-6 block"></i>
-                
-                <h2 class="font-serif text-2xl font-bold text-gray-800 mb-4">Confirmação Final</h2>
-                
-                <p class="text-gray-600 mb-8 leading-relaxed">
-                    "Agora que você tem todos os detalhes, aguardamos o seu 'Sim' final para prepararmos sua recepção."
-                </p>
+                <div class="gift-category">
+                    <h3><i class="fas fa-utensils mr-2 text-xs"></i>Cozinha</h3>
+                    <p class="gift-items">
+                        Triturador/Processador, Jogo de vasilhas, Garrafa de Café, Jarra de água, Jarra de suco com copos, Panela de Pressão, Frigideiras, Copos plástico/vidro, Jogo de Taças, Jogo de Xícara, Jogo de talher, Jogo de facas, Jogo de Prato, Escorredores (arroz, macarrão, louças), Tábua de corte, Travessas/marinex, Porta temperos, Porta queijo/presunto, Potes herméticos, Formas/Assadeiras, Panos de prato/mesa, Tapetes, Jogo de Panelas alumínio (P/M/G), Jogo de Panelas antiaderente (P/M/G), Fruteira, Kit colheres silicone, Amassador de Batata, Ralador, Espátula/Pegadores, Abridor.
+                    </p>
+                </div>
 
-                <button onclick="openWhatsApp()" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-full shadow-lg transform transition hover:scale-105 flex items-center justify-center gap-3">
-                    <span class="font-serif tracking-wide">CONFIRMAR PRESENÇA</span>
-                    <i class="fas fa-paper-plane"></i>
-                </button>
+                <div class="gift-category">
+                    <h3><i class="fas fa-plug mr-2 text-xs"></i>Eletrodomésticos</h3>
+                    <p class="gift-items">
+                        Airfryer, Sanduicheira, Liquidificador, Panela Elétrica.
+                    </p>
+                </div>
+
+                <div class="gift-category">
+                    <h3><i class="fas fa-bed mr-2 text-xs"></i>Quarto</h3>
+                    <p class="gift-items">
+                        Jogo de Colcha de cama completo, Travesseiros, Cortina, Lençóis, Toalhas de banho, Toalhas de rosto, Edredom, Tapetes.
+                    </p>
+                </div>
                 
-                <p class="text-xs text-gray-400 mt-4">
-                    Ao clicar, selecione o contato dos noivos para enviar a mensagem automática.
-                </p>
-            </div>
-            
-            <div class="mt-12 text-center opacity-60">
-                <i class="fas fa-dove text-serenity-500 text-2xl"></i>
-                <p class="font-serif text-xs text-serenity-700 mt-2">Soli Deo Gloria</p>
+                <div class="text-center mt-6">
+                     <i class="fas fa-chevron-down animate-bounce text-serenity"></i>
+                </div>
             </div>
         </section>
 
-        <!-- Espaço extra para não cobrir conteúdo com a navbar -->
-        <div class="h-12"></div>
-    </main>
-
-    <!-- NAVEGAÇÃO MODULAR (FIXA NO RODAPÉ) -->
-    <nav class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-50 h-[80px] pb-[safe-area-inset-bottom]">
-        <div class="flex justify-around items-center h-full max-w-lg mx-auto px-2">
-            
-            <button onclick="switchTab('home')" class="nav-btn active-nav flex flex-col items-center justify-center w-1/5 text-gray-400 transition-all duration-300" data-target="home">
-                <i class="fas fa-home text-lg mb-1"></i>
-                <span class="text-[10px] font-sans uppercase tracking-wider">Início</span>
-            </button>
-            
-            <button onclick="switchTab('location')" class="nav-btn flex flex-col items-center justify-center w-1/5 text-gray-400 transition-all duration-300" data-target="location">
-                <i class="fas fa-map-marked-alt text-lg mb-1"></i>
-                <span class="text-[10px] font-sans uppercase tracking-wider">Local</span>
-            </button>
-            
-            <!-- Botão Central Destaque -->
-            <button onclick="switchTab('guidelines')" class="nav-btn flex flex-col items-center justify-center w-1/5 text-gray-400 transition-all duration-300 -mt-6" data-target="guidelines">
-                <div class="bg-serenity-500 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-4 border-white">
-                    <i class="fas fa-book-open text-lg"></i>
+        <!-- PÁGINA 5: CONFIRMAÇÃO (RSVP) -->
+        <section id="rsvp">
+            <div class="glass-card">
+                <div class="mb-6">
+                    <i class="far fa-heart text-4xl text-gold mb-4 animate-pulse"></i>
+                    <h2 class="font-serif text-3xl text-gray-800 font-bold">Confirmação</h2>
                 </div>
-                <span class="text-[10px] font-sans uppercase tracking-wider mt-1">Guia</span>
-            </button>
-            
-            <button onclick="switchTab('gifts')" class="nav-btn flex flex-col items-center justify-center w-1/5 text-gray-400 transition-all duration-300" data-target="gifts">
-                <i class="fas fa-gift text-lg mb-1"></i>
-                <span class="text-[10px] font-sans uppercase tracking-wider">Mimos</span>
-            </button>
-            
-            <button onclick="switchTab('rsvp')" class="nav-btn flex flex-col items-center justify-center w-1/5 text-gray-400 transition-all duration-300" data-target="rsvp">
-                <i class="fas fa-check-circle text-lg mb-1"></i>
-                <span class="text-[10px] font-sans uppercase tracking-wider">RSVP</span>
-            </button>
-            
-        </div>
-    </nav>
+
+                <p class="font-sans text-gray-600 mb-10 text-lg leading-relaxed">
+                    Agora que você tem todos os detalhes, aguardamos o seu <strong class="text-serenity">"Sim"</strong> final para prepararmos sua recepção.
+                </p>
+
+                <a id="whatsapp-link" href="#" target="_blank"
+                   class="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-sans font-bold py-4 px-6 rounded-full shadow-xl transition transform hover:scale-105 flex items-center justify-center gap-3">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                    <span>CONFIRMAR PRESENÇA</span>
+                </a>
+
+                <p class="text-xs text-gray-400 mt-8">
+                    Clique no botão acima para escolher o contato e enviar sua mensagem automática.
+                </p>
+
+                <div class="mt-12 opacity-60">
+                    <p class="font-script text-2xl text-serenity">Ronaldo & Vitoria</p>
+                    <p class="text-[10px] text-gray-500 mt-1 uppercase tracking-widest">Deus uniu, o homem não separa.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
 
     <script>
-        // Função para Navegação entre Abas
-        function switchTab(tabId) {
-            // Esconder todas as seções
-            const sections = document.querySelectorAll('.page-section');
-            sections.forEach(section => {
-                section.classList.add('hidden');
-                section.classList.remove('fade-in'); // Reset animação
-            });
+        // 1. CONFIGURAÇÃO DO CONTADOR REGRESSIVO
+        const targetDate = new Date("Dec 19, 2025 19:30:00").getTime();
 
-            // Mostrar seção alvo e adicionar animação
-            const targetSection = document.getElementById('page-' + tabId);
-            targetSection.classList.remove('hidden');
-            // Pequeno delay para reiniciar animação
-            setTimeout(() => {
-                targetSection.classList.add('fade-in');
-            }, 10);
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
 
-            // Scroll para o topo
-            document.getElementById('content-area').scrollTop = 0;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Atualizar botões da nav
-            const navButtons = document.querySelectorAll('.nav-btn');
-            navButtons.forEach(btn => {
-                btn.classList.remove('active-nav', 'text-serenity-700');
-                btn.classList.add('text-gray-400');
-                
-                // Tratamento especial para o ícone do meio se necessário
-                if(btn.dataset.target === tabId) {
-                    btn.classList.add('active-nav', 'text-serenity-700');
-                    btn.classList.remove('text-gray-400');
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "<div class='text-gold font-serif text-xl font-bold'>Chegou o grande dia!</div>";
+            }
+        }, 1000);
+
+        // 2. LÓGICA DO LINK DO WHATSAPP
+        const message = "Queridos Noivos, É com grande alegria e honra que confirmo minha presença para testemunhar esta nova aliança firmada em Deus no dia 19/12/2025. Regozijamo-nos pela oportunidade de celebrar convosco o início desta jornada.";
+        const encodedMessage = encodeURIComponent(message);
+        // O link abre o seletor de contatos do WhatsApp (sem número específico)
+        document.getElementById("whatsapp-link").href = `https://wa.me/?text=${encodedMessage}`;
+
+        // 3. ANIMAÇÃO DE ENTRADA (Intersection Observer)
+        const observerOptions = {
+            root: document.getElementById('main-container'),
+            threshold: 0.4 // Dispara quando 40% da seção estiver visível
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-active');
+                } else {
+                    // Opcional: Remover a classe se quiser que anime toda vez que rolar de volta
+                    // entry.target.classList.remove('section-active'); 
                 }
             });
-        }
+        }, observerOptions);
 
-        // Função para expandir listas de presentes (Accordions)
-        function toggleGiftList(listId, arrowId) {
-            const list = document.getElementById(listId);
-            const arrow = document.getElementById(arrowId);
-            
-            if (list.classList.contains('hidden')) {
-                list.classList.remove('hidden');
-                arrow.classList.remove('fa-chevron-down');
-                arrow.classList.add('fa-chevron-up');
-            } else {
-                list.classList.add('hidden');
-                arrow.classList.remove('fa-chevron-up');
-                arrow.classList.add('fa-chevron-down');
-            }
-        }
-
-        // Função para Abrir Mapa
-        function openMap() {
-            // Endereço codificado para URL
-            const address = encodeURIComponent("Olimpio Brito n. 0, Vila Santa Rita, Tocantinópolis, TO, 77900-000");
-            window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank');
-        }
-
-        // Função para WhatsApp (Link Aberto)
-        function openWhatsApp() {
-            const message = "Queridos Noivos, É com grande alegria e honra que confirmo minha presença para testemunhar esta nova aliança firmada em Deus no dia 19/12/2025. Regozijamo-nos pela oportunidade de celebrar convosco o início desta jornada.";
-            // wa.me/?text=... abre o app e pede para selecionar o contato
-            const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-        }
-
-        // Inicializar com a lista de cozinha aberta (opcional)
-        // toggleGiftList('kitchen-list', 'arrow-1');
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
     </script>
 </body>
 </html>
